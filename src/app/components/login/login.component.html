@@ -1,0 +1,30 @@
+<div class="login_page">
+  <h1>Login</h1>
+  <div class="user_name_wrapper">
+    <label
+      >Username
+      <div class="input_wrapper app_flex_center">        
+        <input type="text" placeholder="username" [(ngModel)]="username" />
+        <i class="material-icons">person_outline</i>
+      </div>
+    </label>
+  </div>
+  <div class="password_wrapper">
+    <label
+      >Password
+      <div class="input_wrapper app_flex_center">        
+        <input type="password" placeholder="password" [(ngModel)]="password" />
+        <i class="material-icons">lock_outline</i>
+      </div>
+    </label>
+  </div>
+  <div class="forgot_password purple_on_hover">
+    <span>Forget Password?</span>
+  </div>
+
+  <div (click)="login()" class="submit_button app_flex_center">
+    <span>Login</span>
+  </div>
+
+  <p class="swich_login_signup purple_on_hover">Or Sign Up</p>
+</div>
