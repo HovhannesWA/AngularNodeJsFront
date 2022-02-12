@@ -2,7 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
 
 :root {
-  --main-purple: #a64bf4;
+  --hover-color: #5fc4c8;
+  --main-gradient: linear-gradient(315deg, #63d471 0%, #5fc4c8  80%);
 }
 
 * {
@@ -22,9 +23,15 @@
   height: 100vh;
 }
 
-.purple_on_hover{
+.change_color_on_hover{
   transition: color 0.2s linear;
 }
-.purple_on_hover:hover{
-  color: var(--main-purple);
+.change_color_on_hover:hover{
+  color: var(--hover-color);
+}
+
+.validation_messsage{
+  position: absolute;
+  margin-top: 3px;
+  color: darkred;
 }

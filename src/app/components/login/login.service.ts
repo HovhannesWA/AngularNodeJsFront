@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -9,7 +9,8 @@ export class LoginService {
 
   login(username: string, password: string) {
     this.http
-      .post('/api/login', {
+    //todo change api to LOGIN
+      .post('/api/registration', {
         username,
         password
       })
