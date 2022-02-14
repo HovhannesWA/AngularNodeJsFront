@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 
 @Component({
-    selector: 'app-empty-component',
+    selector: 'app-empty-layout',
     templateUrl: './empty-layout.component.html',
     styleUrls: ['./empty-layout.component.scss']
 })

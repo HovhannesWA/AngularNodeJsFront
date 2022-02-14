@@ -34,4 +34,20 @@
   position: absolute;
   margin-top: 3px;
   color: darkred;
+  display: none;
+}
+
+.ng-touched{
+  .validation_messsage{
+    display: block;
+  }
+}
+
+.password_input_wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  i{
+    cursor: pointer;
+  }
 }

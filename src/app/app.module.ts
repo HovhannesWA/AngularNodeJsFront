@@ -4,13 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+//Router
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+//Layouts
 import { MainLayoutComponent } from './layouts/main/main-layout.component';
 import { EmptyLayoutComponent } from './layouts/empty/empty-layout.component';
 
 //Components
+import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,8 @@ import { LoginComponent } from './components/login/login.component';
     MainLayoutComponent,
     EmptyLayoutComponent,
 
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

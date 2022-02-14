@@ -1,13 +1,12 @@
-.login_page {
+.registration_page {
   font-family: Poppins;
-  width: 500px;
+  width: 800px;
+  max-height: 80vh;
   background: #fff;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: auto;
   padding: 65px 55px 150px 55px;
-  @media (max-width: 700px) {
-    width: 350px;
-  }
+
   h1 {
     display: block;
     font-size: 39px;
@@ -17,16 +16,20 @@
     padding-bottom: 49px;
   }
 
-  .user_name_wrapper,
-  .password_wrapper {
+  .row {
+    display: flex;
+    gap: 20px;    
+  }
+
+  .filed_wrapper {
+    width: 100%;
     border-bottom: 2px solid #d9d9d9;
     margin-bottom: 23px;
     label {
       font-size: 14px;
       color: #333333;
       line-height: 1.5;
-      padding-left: 7px;
-    }    
+    }
     .input_wrapper {
       flex-direction: row-reverse;
     }
@@ -42,25 +45,20 @@
       outline: none;
       border: none;
       transition: color 0.2s linear;
-      &:focus{
+      &:focus {
         color: var(--hover-color);
-        ~ i{
+        ~ i {
           color: var(--hover-color);
         }
-      }      
+      }
     }
     i {
       transition: color 0.2s linear;
     }
   }
 
-  .forgot_password {
-    display: block;
-    text-align: right;
-    cursor: pointer;
-  }
   .submit_button {
-    font-size: 16px;    
+    font-size: 16px;
     background-image: var(--main-gradient);
 
     color: #fff;
@@ -78,4 +76,17 @@
     text-align: center;
     cursor: pointer;
   }
+}
+
+@media (max-width: 850px) {
+  .registration_page {
+    width: 400px;
+    padding-top: 30px;
+    h1{
+        padding-bottom: 30px;
+    }
+    .row{
+      flex-direction: column;
+    }
+  }  
 }

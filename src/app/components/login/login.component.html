@@ -3,37 +3,50 @@
   <form novalidate [formGroup]="form">
     <div class="user_name_wrapper">
       <label
-        >Username
+        >E-mail
         <div class="input_wrapper app_flex_center">
-          <input
-            (input)="resetErrors('username')"
+          <input            
             type="text"
-            placeholder="username"
-            formControlName="username"
+            placeholder="E-mail"
+            formControlName="email"
           />
-          <i class="material-icons">person_outline</i>
+          <i class="material-icons">email</i>
         </div>
       </label>
-      <div *ngIf="errors.username" class="validation_messsage">
-        {{ errors.username }}
+      <div *ngIf="form.controls['email'].errors" class="validation_messsage">
+        <span *ngIf="form.controls['email'].errors['required']">
+          {{ $t("field_is_required") }}
+        </span>
+        <span *ngIf="form.controls['email'].errors['email']">
+          {{ $t("invalid_email_format") }}
+        </span>
       </div>
     </div>
     <div class="password_wrapper">
       <label
         >Password
-        <div class="input_wrapper app_flex_center">
-          <input
-            (input)="resetErrors('pass')"
-            type="password"
-            placeholder="password"
-            formControlName="password"
-          />
-          <i class="material-icons">lock_outline</i>
+        <div class="password_input_wrapper">
+          <div class="input_wrapper app_flex_center">
+            <input            
+              [type]="show_pass ? 'text' : 'password'"
+              placeholder="password"
+              formControlName="password"
+            />
+            <i class="material-icons">lock_outline</i>                   
+          </div>
+          <span (click)="show_pass = !show_pass" class="app_flex_center">
+            <i class="material-icons">{{ show_pass ? 'visibility' : 'visibility_off' }}</i>
+          </span>
         </div>
       </label>
-      <div *ngIf="errors.pass" class="validation_messsage">
-        {{ errors.pass }}
-      </div>
+      <div
+          *ngIf="form.controls['password'].errors"
+          class="validation_messsage"
+        >
+          <span *ngIf="form.controls['password'].errors['required']">
+            {{ $t("field_is_required") }}
+          </span>          
+        </div>
     </div>
     <div class="forgot_password change_color_on_hover">
       <span>Forget Password?</span>
@@ -43,6 +56,6 @@
       <span>Login</span>
     </div>
 
-    <p class="swich_login_signup change_color_on_hover">Or Sign Up</p>
+    <p (click)="gredirectToRegistration()" class="swich_login_signup change_color_on_hover">Or Sign Up</p>
   </form>
 </div>

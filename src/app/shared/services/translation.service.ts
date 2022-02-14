@@ -9,7 +9,9 @@ export class TranslationService {
   }
 
   private translations: any = {
-    username_error_required: 'Username field is required',
-    password_error_required: 'Password field is required',
+    field_is_required: 'Field is required',    
+    fields_must_match: ':filed_name must much',
+    validation_min_length: 'Must contain at last :minlength cars',
+    invalid_email_format: "Invalid E-mail format"
   };
 }

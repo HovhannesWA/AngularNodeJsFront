@@ -1,0 +1,165 @@
+<div class="registration_page">
+  <h1>Registration</h1>
+  <form novalidate [formGroup]="form">
+    <div class="row">
+      <!-- First Name -->
+      <div class="filed_wrapper">
+        <label
+          >First Name
+          <div class="input_wrapper app_flex_center">
+            <input
+              type="text"
+              placeholder="first name"
+              formControlName="first_name"
+            />
+            <i class="material-icons">person_outline</i>
+          </div>
+        </label>
+        <div
+          *ngIf="form.controls['first_name'].errors"
+          class="validation_messsage"
+        >
+          <span *ngIf="form.controls['first_name'].errors['required']">
+            {{ $t("field_is_required") }}
+          </span>
+          <span *ngIf="form.controls['first_name'].errors['minlength']">
+            {{
+              $t("validation_min_length").replace(":minlength", name_min_length)
+            }}
+          </span>
+        </div>
+      </div>
+      <!-- Last Name -->
+      <div class="filed_wrapper">
+        <label
+          >Last Name
+          <div class="input_wrapper app_flex_center">
+            <input
+              type="text"
+              placeholder="last name"
+              formControlName="last_name"
+            />
+            <i class="material-icons">person_outline</i>
+          </div>
+        </label>
+        <div
+          *ngIf="form.controls['last_name'].errors"
+          class="validation_messsage"
+        >
+          <span *ngIf="form.controls['last_name'].errors['required']">
+            {{ $t("field_is_required") }}
+          </span>
+          <span *ngIf="form.controls['last_name'].errors['minlength']">
+            {{
+              $t("validation_min_length").replace(":minlength", name_min_length)
+            }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="filed_wrapper">
+      <label
+        >E-mail
+        <div class="input_wrapper app_flex_center">
+          <input type="text" placeholder="E-mail" formControlName="email" />
+          <i class="material-icons">email</i>
+        </div>
+      </label>
+      <div *ngIf="form.controls['email'].errors" class="validation_messsage">
+        <span *ngIf="form.controls['email'].errors['required']">
+          {{ $t("field_is_required") }}
+        </span>
+        <span *ngIf="form.controls['email'].errors['email']">
+          {{ $t("invalid_email_format") }}
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Password -->
+      <div class="filed_wrapper">
+        <label
+          >Password
+          <div class="password_input_wrapper">
+            <div class="input_wrapper app_flex_center">
+              <input
+                (input)="form.controls['confirm_password'].updateValueAndValidity()"
+                [type]="show_pass ? 'text' : 'password'"
+                placeholder="password"
+                formControlName="password"
+              />
+              <i class="material-icons">lock_outline</i>
+            </div>
+            <span (click)="show_pass = !show_pass" class="app_flex_center">
+              <i class="material-icons">{{ show_pass ? 'visibility' : 'visibility_off' }}</i>
+            </span>
+          </div>          
+        </label>
+        <div
+          *ngIf="form.controls['password'].errors"
+          class="validation_messsage"
+        >
+          <span *ngIf="form.controls['password'].errors['required']">
+            {{ $t("field_is_required") }}
+          </span>
+          <span *ngIf="form.controls['password'].errors['minlength']">
+            {{
+              $t("validation_min_length").replace(
+                ":minlength",
+                password_min_length
+              )
+            }}
+          </span>
+        </div>
+      </div>
+      <!-- Confirm Password -->
+      <div class="filed_wrapper">
+        <label
+          >Confirm Password
+          <div class="password_input_wrapper">
+            <div class="input_wrapper app_flex_center">
+              <input
+                [type]="show_pass_con ? 'text' : 'password'"
+                placeholder="confirm password"
+                formControlName="confirm_password"
+              />
+              <i class="material-icons">lock_outline</i>
+            </div>
+            <span (click)="show_pass_con = !show_pass_con" class="app_flex_center">
+              <i class="material-icons">{{ show_pass_con ? 'visibility' : 'visibility_off' }}</i>
+            </span>
+          </div>          
+        </label>
+        <div
+          *ngIf="form.controls['confirm_password'].errors"
+          class="validation_messsage"
+        >
+          <span *ngIf="form.controls['confirm_password'].errors['required']">
+            {{ $t("field_is_required") }}
+          </span>
+          <span
+            *ngIf="
+              form.controls['confirm_password'].errors['must_match'] &&
+              !form.controls['confirm_password'].errors['required']
+            "
+          >
+            {{ $t("fields_must_match").replace(":filed_name", "Passwords") }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div (click)="checkForm()" class="submit_button app_flex_center">
+      <span>Register</span>
+    </div>
+
+    <p
+      (click)="gredirectToLogin()"
+      class="swich_login_signup change_color_on_hover"
+    >
+      Or Login
+    </p>
+  </form>
+</div>
