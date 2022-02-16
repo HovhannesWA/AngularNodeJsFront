@@ -1,15 +1,16 @@
 <div class="login_page">
   <h1>Login</h1>
-  <form novalidate [formGroup]="form">
+  <form
+    (keydown.enter)="checkForm('submit_btn')"
+    novalidate
+    [formGroup]="form"
+    [ngClass]="{ app_form_is_touched: form_is_touched }"
+  >
     <div class="user_name_wrapper">
       <label
         >E-mail
         <div class="input_wrapper app_flex_center">
-          <input            
-            type="text"
-            placeholder="E-mail"
-            formControlName="email"
-          />
+          <input type="text" placeholder="E-mail" formControlName="email" />
           <i class="material-icons">email</i>
         </div>
       </label>
@@ -20,6 +21,9 @@
         <span *ngIf="form.controls['email'].errors['email']">
           {{ $t("invalid_email_format") }}
         </span>
+        <span *ngIf="form.controls['email'].errors['server_error']">
+          {{ form.controls["email"].errors["server_error"] }}
+        </span>
       </div>
     </div>
     <div class="password_wrapper">
@@ -27,35 +31,44 @@
         >Password
         <div class="password_input_wrapper">
           <div class="input_wrapper app_flex_center">
-            <input            
+            <input
+              (input)="resetServerErrors()"
               [type]="show_pass ? 'text' : 'password'"
               placeholder="password"
               formControlName="password"
             />
-            <i class="material-icons">lock_outline</i>                   
+            <i class="material-icons">lock_outline</i>
           </div>
           <span (click)="show_pass = !show_pass" class="app_flex_center">
-            <i class="material-icons">{{ show_pass ? 'visibility' : 'visibility_off' }}</i>
+            <i class="material-icons">{{
+              show_pass ? "visibility" : "visibility_off"
+            }}</i>
           </span>
         </div>
       </label>
-      <div
-          *ngIf="form.controls['password'].errors"
-          class="validation_messsage"
-        >
-          <span *ngIf="form.controls['password'].errors['required']">
-            {{ $t("field_is_required") }}
-          </span>          
-        </div>
+      <div *ngIf="form.controls['password'].errors" class="validation_messsage">
+        <span *ngIf="form.controls['password'].errors['required']">
+          {{ $t("field_is_required") }}
+        </span>
+      </div>
     </div>
     <div class="forgot_password change_color_on_hover">
       <span>Forget Password?</span>
     </div>
 
-    <div (click)="checkForm()" class="submit_button app_flex_center">
+    <div
+      (click)="checkForm('submit_btn')"
+      id="submit_btn"
+      class="submit_button app_flex_center"
+    >
       <span>Login</span>
     </div>
 
-    <p (click)="gredirectToRegistration()" class="swich_login_signup change_color_on_hover">Or Sign Up</p>
+    <p
+      (click)="gredirectToRegistration()"
+      class="swich_login_signup change_color_on_hover"
+    >
+      Or Sign Up
+    </p>
   </form>
 </div>

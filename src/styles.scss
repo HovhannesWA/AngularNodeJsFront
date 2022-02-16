@@ -1,6 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
 
+
+//toastr
+@import '~ngx-toastr/toastr';
+
+//loader
+@import './app/styles/loader.style.scss';
+
 :root {
   --hover-color: #5fc4c8;
   --main-gradient: linear-gradient(315deg, #63d471 0%, #5fc4c8  80%);
@@ -37,7 +44,7 @@
   display: none;
 }
 
-.ng-touched{
+.app_form_is_touched{
   .validation_messsage{
     display: block;
   }

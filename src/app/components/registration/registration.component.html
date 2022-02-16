@@ -1,6 +1,6 @@
 <div class="registration_page">
   <h1>Registration</h1>
-  <form novalidate [formGroup]="form">
+  <form (keydown.enter)="checkForm('submit_btn')" novalidate [formGroup]="form" [ngClass]="{'app_form_is_touched': form_is_touched}">
     <div class="row">
       <!-- First Name -->
       <div class="filed_wrapper">
@@ -26,6 +26,9 @@
             {{
               $t("validation_min_length").replace(":minlength", name_min_length)
             }}
+          </span>
+          <span *ngIf="form.controls['first_name'].errors['server_error']">
+            {{ form.controls['first_name'].errors['server_error'] }}
           </span>
         </div>
       </div>
@@ -54,6 +57,9 @@
               $t("validation_min_length").replace(":minlength", name_min_length)
             }}
           </span>
+          <span *ngIf="form.controls['last_name'].errors['server_error']">
+            {{ form.controls['last_name'].errors['server_error'] }}
+          </span>
         </div>
       </div>
     </div>
@@ -73,6 +79,12 @@
         </span>
         <span *ngIf="form.controls['email'].errors['email']">
           {{ $t("invalid_email_format") }}
+        </span>
+        <span *ngIf="form.controls['email'].errors['email_already_exists'] && !form.controls['email'].errors['email']">
+          {{ $t("email_already_exists") }}
+        </span>
+        <span *ngIf="form.controls['email'].errors['server_error']">
+          {{ form.controls['email'].errors['server_error'] }}
         </span>
       </div>
     </div>
@@ -94,7 +106,7 @@
             </div>
             <span (click)="show_pass = !show_pass" class="app_flex_center">
               <i class="material-icons">{{ show_pass ? 'visibility' : 'visibility_off' }}</i>
-            </span>
+            </span>            
           </div>          
         </label>
         <div
@@ -111,6 +123,9 @@
                 password_min_length
               )
             }}
+          </span>
+          <span *ngIf="form.controls['password'].errors['server_error']">
+            {{ form.controls['password'].errors['server_error'] }}
           </span>
         </div>
       </div>
@@ -147,11 +162,14 @@
           >
             {{ $t("fields_must_match").replace(":filed_name", "Passwords") }}
           </span>
+          <span *ngIf="form.controls['confirm_password'].errors['server_error']">
+            {{ form.controls['confirm_password'].errors['server_error'] }}
+          </span>
         </div>
       </div>
     </div>
 
-    <div (click)="checkForm()" class="submit_button app_flex_center">
+    <div *ngIf="!submit_btn_is_disable" id="submit_btn" (click)="checkForm('submit_btn')" class="submit_button app_flex_center">
       <span>Register</span>
     </div>
 

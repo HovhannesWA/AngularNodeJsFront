@@ -1,0 +1,95 @@
+.button_loading {
+  position: relative;
+  font-size: 0;
+  cursor: default;
+  pointer-events: none;
+}
+
+.button_loading:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #13538f;
+}
+
+.button_loading:after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 4px solid transparent;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: button_loading_spinner 1s ease infinite;
+}
+
+@keyframes button_loading_spinner {
+  from {
+    transform: rotate(0turn);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+//Table loader
+.loading_row_dark,
+.loading_row_light {
+  position: relative;
+  font-size: 0;
+  cursor: default;
+  pointer-events: none;
+}
+
+.loading_row_dark {
+  position: relative;
+}
+.loading_row_light {
+  position: relative;
+}
+
+.loading_row_dark:before,
+.loading_row_light:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #13538f;
+}
+
+.loading_row_dark:after,
+.loading_row_light:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: rowLoading 1s ease infinite;
+  background: linear-gradient(to right, #eee 20%, #ddd 50%, #eee 80%);
+  width: 100%;
+  height: 100%;
+}
+
+.loading_row_dark:after {
+  background: linear-gradient(
+    to right,
+    rgb(4 4 4 / 87%) 20%,
+    #555454 50%,
+    #1d1717 80%
+  );
+}
+
+@keyframes rowLoading {
+  0% {
+    background-position: -250px 0;
+  }
+  100% {
+    background-position: 250px 0;
+  }
+}

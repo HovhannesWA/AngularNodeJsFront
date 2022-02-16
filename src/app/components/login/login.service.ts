@@ -6,12 +6,11 @@ import { Injectable } from '@angular/core';
 export class LoginService {
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string) {
-    this.http    
+  login(email: string, password: string) {
+    return this.http    
       .post('/api/login', {
-        username,
+        email,
         password
-      })
-      .subscribe((data) => console.log(data));
+      })      
   }
 }
