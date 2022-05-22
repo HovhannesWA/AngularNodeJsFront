@@ -1,5 +1,7 @@
 <div class="login_page">
   <h1>Login</h1>
+  <a routerLink="/settings">test settings</a>
+  <a routerLink="/todos">test todos</a>
   <form
     (keydown.enter)="checkForm('submit_btn')"
     novalidate
@@ -10,7 +12,7 @@
       <label
         >E-mail
         <div class="input_wrapper app_flex_center">
-          <input type="text" placeholder="E-mail" formControlName="email" />
+          <input type="text" placeholder="E-mail" formControlName="email" autocomplete="email"/>
           <i class="material-icons">email</i>
         </div>
       </label>
@@ -36,6 +38,7 @@
               [type]="show_pass ? 'text' : 'password'"
               placeholder="password"
               formControlName="password"
+              autocomplete="new-password"
             />
             <i class="material-icons">lock_outline</i>
           </div>

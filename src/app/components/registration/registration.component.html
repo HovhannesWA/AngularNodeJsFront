@@ -11,6 +11,7 @@
               type="text"
               placeholder="first name"
               formControlName="first_name"
+              autocomplete="off"
             />
             <i class="material-icons">person_outline</i>
           </div>
@@ -41,6 +42,7 @@
               type="text"
               placeholder="last name"
               formControlName="last_name"
+              autocomplete="off"
             />
             <i class="material-icons">person_outline</i>
           </div>
@@ -69,7 +71,7 @@
       <label
         >E-mail
         <div class="input_wrapper app_flex_center">
-          <input type="text" placeholder="E-mail" formControlName="email" />
+          <input type="text" placeholder="E-mail" formControlName="email" autocomplete="email"/>
           <i class="material-icons">email</i>
         </div>
       </label>
@@ -101,6 +103,7 @@
                 [type]="show_pass ? 'text' : 'password'"
                 placeholder="password"
                 formControlName="password"
+                autocomplete="new-password"
               />
               <i class="material-icons">lock_outline</i>
             </div>
@@ -139,6 +142,7 @@
                 [type]="show_pass_con ? 'text' : 'password'"
                 placeholder="confirm password"
                 formControlName="confirm_password"
+                autocomplete="new-password"
               />
               <i class="material-icons">lock_outline</i>
             </div>

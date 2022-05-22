@@ -15,7 +15,7 @@ interface IServer_Error {
 })
 export class HelperService {
   catchServerErrors(errors: IServer_Error, form: FormGroup) {    
-    if (errors.error?.errors) {
+    if (errors.error?.errors && Array.isArray(errors.error.errors)) {
       let server_errors = errors.error?.errors;
       server_errors.forEach((err) => {
         let server_err = {

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
 //Router
@@ -16,6 +16,12 @@ import { EmptyLayoutComponent } from './layouts/empty/empty-layout.component';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { AuthInterceptor } from './shared/interceptors/auth-interceptor.service';
+
+//Modules
+import { TodosModule } from './components/todos/todos.module';
+import { SettingsModule } from './components/settings/settings.module';
+import { SharedModule } from './shared/shared-module';
 
 @NgModule({
   declarations: [
@@ -33,9 +39,12 @@ import { RegistrationComponent } from './components/registration/registration.co
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    SharedModule,
+    // TodosModule,
+    // SettingsModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
