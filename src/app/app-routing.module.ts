@@ -12,6 +12,7 @@ import { page404Component } from './components/page404/page404.component';
 //Guards
 import { AuthGuard } from './shared/guards/auth-guarde.service';
 import { GuestGuard } from './shared/guards/guest-guard.service';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'registration', component: RegistrationComponent, canActivate: [GuestGuard] },
     ],
   },
+  {path: 'home', component: HomeComponent},
   {path: 'todos', loadChildren: () => import('./components/todos/todos.module').then(m => m.TodosModule)},
   {path: 'settings', loadChildren: () => import('./components/settings/settings.module').then(m => m.SettingsModule)}
 

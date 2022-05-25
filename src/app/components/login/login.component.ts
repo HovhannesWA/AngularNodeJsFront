@@ -93,6 +93,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.auth_service.setAccessToken(data.access_token);
           this.updateUser(data.user);
           this.loader.hideButtonLoader();
+          this.router.navigate(['/home']);
         },
         error: (err) => {               
           this.helper.catchServerErrors(err, this.form);          

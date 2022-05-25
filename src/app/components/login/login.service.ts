@@ -12,7 +12,7 @@ export class LoginService {
 
   login(email: string, password: string): Observable<any> {
     return this.http
-      .post('/api/login', {
+      .post('/api/auth/login', {
         email,
         password,
       })

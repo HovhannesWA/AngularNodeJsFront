@@ -44,6 +44,7 @@ export class AuthService implements OnInit {
   }
 
   setAccessToken(token: string){
+      token = 'Bearer ' + token;
       this.access_token = token;
       localStorage.setItem('access_token', token);
   }

@@ -22,6 +22,7 @@ import { AuthInterceptor } from './shared/interceptors/auth-interceptor.service'
 import { TodosModule } from './components/todos/todos.module';
 import { SettingsModule } from './components/settings/settings.module';
 import { SharedModule } from './shared/shared-module';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SharedModule } from './shared/shared-module';
     EmptyLayoutComponent,
 
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
