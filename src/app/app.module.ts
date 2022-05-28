@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { StoreModule } from '@ngrx/store';
 
 //Router
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,9 @@ import { SettingsModule } from './components/settings/settings.module';
 import { SharedModule } from './shared/shared-module';
 import { HomeComponent } from './components/home/home.component';
 
+//NGRX
+import { reducers } from './store/reducers';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +45,7 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreModule.forRoot(reducers),
     ToastrModule.forRoot(),
     SharedModule,
     // TodosModule,

@@ -1,5 +1,16 @@
 <div>
     <button class="btn btn-danger" (click)="logout()">Logout</button>
     <hr>
-    <button (click)="getStatistic()" class="btn btn-success">get Statistic</button>
+    <button (click)="getStatistic()" >get Statistic</button>
+    <hr>
+    <button (click)="add()" class="btn btn-success">Add</button>
+    <hr>
+    
+
+    <div style="margin: 20px 0 0 0;">
+      <div *ngFor="let n of (items | async)?.items; let i = index" :key="item">
+          {{ n }}
+          <button (click)="remove(i)" class="btn btn-danger">remove</button>
+      </div>
+    </div>
 </div>
